@@ -9,6 +9,8 @@ import subprocess
 import click
 from gtts import gTTS
 
+TEXT_TO_SPEECH_METHODS = ['gtts', 'espeak']
+
 def execute_unix(inputcommand):
     """
     Execute a command and fail
@@ -42,24 +44,21 @@ def read_text_aloud(text, strategy="gtts"):
     else:
         raise Exception(f"Unrecognized strategy {strategy}")
 
-@click.group()
-def python_code_to_speech():
+@click.command(context_settings={'show_default': True})
+@click.argument('filename')
+@click.option('--text-to-speech-method', type=click.Choice(TEXT_TO_SPEECH_METHODS), default="gtts")
+def python_code_to_speech(filename, text_to_speech_method):
     """
-    Group of subcommands
+    Main command implementation
     """
-
-@python_code_to_speech.command()
-def gtts():
-    '''Command on python_code_to_speech'''
-    text = "escape with plane"
-    read_text_aloud(text, strategy="gtts")
-
-@python_code_to_speech.command()
-def espeak():
-    '''Command on python_code_to_speech'''
-    text = "Say something in natural language."
-    read_text_aloud(text, strategy="espeak")
+    with open(filename, "r", encoding="utf8") as file_to_read:
+        text = file_to_read.read()
+        if text_to_speech_method == "gtts":
+            read_text_aloud(text, strategy="gtts")
+        elif text_to_speech_method == "espeak":
+            read_text_aloud(text, strategy="espeak")
 
 
 if __name__ == '__main__':
+    # pylint: disable=no-value-for-parameter
     python_code_to_speech()
