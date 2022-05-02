@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python_code_to_speech"
+name = "snakeglish"
 version = "0.1.0"
 description = ""
 authors = ["Shaun Verch"]
@@ -14,6 +14,7 @@ num2words = "^0.5.10"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.13.7"
+pytest-snapshot = "^0.9.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

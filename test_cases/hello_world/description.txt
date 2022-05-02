@@ -1,0 +1,2 @@
+On line 1 we are calling a function named "print" with one argument.
+The first argument to print is a Constant, with a type of str and a value of Hello, world!

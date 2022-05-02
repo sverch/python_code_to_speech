@@ -1,20 +1,23 @@
-# Python Code To Speech
+# Snakeglish
 
-Python Code To Speech is a Python CLI application generated from https://github.com/xuanluong/cookiecutter-python-cli
+Snakeglish reads your python code and speaks back a human readable description.
 
-## Basic setup
+## Example Test Cases
 
-Install the requirements:
+The `test_cases` directory has all the examples. Each test case has the
+directory layout like this:
+
 ```
-$ pip install -r requirements.txt
+├── test_cases
+│   └── <example_name>
+│       ├── code.py
+│       └── description.txt
 ```
 
-Run the application:
-```
-$ python -m python_code_to_speech --help
-```
+The `code.py` file is the input code, and the `description.txt` file is the
+generated description of that code.
 
-To run the tests:
-```
-$ pytest
-```
+## Local Setup
+
+Install [Poetry](https://python-poetry.org/), then use `poetry install` to
+install the dependencies.
